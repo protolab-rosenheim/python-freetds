@@ -1,6 +1,6 @@
 # python-freetds
 
-This docker image may come in handy if your're trying to connect your Python application with a Microsoft SQL Server using [PyODBC](https://github.com/mkleehammer/pyodbc) and the [FreeTDS driver](http://www.freetds.org/).
+This docker image may come in handy if your're trying to connect to a Microsoft SQL Server from your Python application using [PyODBC](https://github.com/mkleehammer/pyodbc) and the [FreeTDS driver](http://www.freetds.org/).
 
 ## What this image does
 Basically this image does three things:
@@ -23,6 +23,15 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 CMD [ "python", "app.py"]
+````
+
+In your Python code you can connect to any SQL Server using the FreeTDS driver:
+
+````python
+connection = pyodbc.connect(driver='{FreeTDS}',
+                            server='servername',
+                            uid='username',
+                            pwd='password')
 ````
 
 ## Environment variables
