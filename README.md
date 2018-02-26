@@ -12,7 +12,7 @@ Basically this image does three things:
 The straight forward use case of this image is to install PyODBC, add your application and run it:
 
 ````dockerfile
-FROM python-freetds
+FROM protolab/python-freetds
 
 WORKDIR /usr/src/app
 
