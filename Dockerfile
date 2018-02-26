@@ -22,7 +22,8 @@ RUN ./configure --prefix=/usr/local \
  && make \
  && make install
 
-RUN echo "[FreeTDS]\n\
+RUN path=$(dpkg --search libtdsS.so) \
+ && echo "[FreeTDS]\n\
 Description = FreeTDS unixODBC Driver\n\
 Driver = /usr/local/lib/libtdsodbc.so\n\
-Setup = /usr/lib/arm-linux-gnueabi/odbc/libtdsS.so" >> /etc/odbcinst.ini
+Setup = ${path#* }" >> /etc/odbcinst.ini
