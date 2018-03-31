@@ -10,8 +10,9 @@ RUN apt-get update && apt-get install -y unixodbc-dev \
 WORKDIR /usr/src
 
 #Download sources for FreeTDS driver
-RUN wget -P . ftp://ftp.freetds.org/pub/freetds/stable/freetds-$FREETDS_VERSION.tar.gz \
- && tar -xvzf freetds-$FREETDS_VERSION.tar.gz
+RUN wget -q -P . ftp://ftp.freetds.org/pub/freetds/stable/freetds-$FREETDS_VERSION.tar.gz \
+ && tar -xzf freetds-$FREETDS_VERSION.tar.gz \
+ && rm freetds-$FREETDS_VERSION.tar.gz
 
 WORKDIR /usr/src/freetds-$FREETDS_VERSION
 
