@@ -4,8 +4,9 @@ ENV FREETDS_VERSION 1.00
 
 #Install dependencies for PyODBC
 RUN apt-get update && apt-get install -y unixodbc-dev \
- && apt install unixodbc-bin -y  \
- && apt-get clean -y
+ && apt install unixodbc-bin -y \
+ && apt-get clean -y \
+ && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src
 
